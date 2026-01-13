@@ -1,0 +1,67 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Victory! - Text Adventure RPG{% endblock %}
+
+{% block content %}
+<div style="text-align: center; padding: 50px 0;">
+    <div style="background: #d4edda; border: 2px solid #c3e6cb; padding: 40px; border-radius: 15px; margin: 30px 0;">
+        <h2 style="color: #155724; margin-bottom: 20px;">🏆 Victory! 🏆</h2>
+        
+        <div style="font-size: 4em; margin: 20px 0;">👑</div>
+        
+        <p style="font-size: 1.3em; color: #155724; margin-bottom: 30px; font-weight: bold;">
+            Congratulations! You are a true champion!
+        </p>
+        
+        <div style="background: #fff; padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <h3 style="color: #155724;">🎊 Achievement Unlocked</h3>
+            <p><strong>🏅 Hero of the Realm</strong></p>
+            <p>You have defeated all 10 enemies and saved the land!</p>
+        </div>
+        
+        <div style="background: #fff3cd; padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <h3 style="color: #856404;">⭐ Your Legend</h3>
+            <p>Your name will be remembered in the annals of history.</p>
+            <p>You have proven yourself as a mighty warrior and strategic thinker.</p>
+            <p>The realm celebrates your victory!</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 30px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                <div style="font-size: 2em;">⚔️</div>
+                <h4>Warrior</h4>
+                <p>Master of combat</p>
+            </div>
+            <div style="background: #e3f2fd; padding: 15px; border-radius: 8px;">
+                <div style="font-size: 2em;">🗺️</div>
+                <h4>Explorer</h4>
+                <p>Discoverer of lands</p>
+            </div>
+            <div style="background: #fce4ec; padding: 15px; border-radius: 8px;">
+                <div style="font-size: 2em;">💎</div>
+                <h4>Collector</h4>
+                <p>Gatherer of treasures</p>
+            </div>
+            <div style="background: #f3e5f5; padding: 15px; border-radius: 8px;">
+                <div style="font-size: 2em;">👑</div>
+                <h4>Champion</h4>
+                <p>Hero of the realm</p>
+            </div>
+        </div>
+        
+        <div style="margin: 40px 0;">
+            <a href="{% url 'start_game' %}" class="btn btn-success" style="font-size: 18px; padding: 15px 30px; margin: 10px;">
+                🔄 New Adventure
+            </a>
+            <a href="{% url 'home' %}" class="btn" style="font-size: 18px; padding: 15px 30px; margin: 10px;">
+                🏠 Main Menu
+            </a>
+        </div>
+    </div>
+    
+    <div style="background: #d1ecf1; padding: 20px; border-radius: 8px; margin-top: 30px;">
+        <p><strong>🎯 Next Challenge:</strong> Can you achieve victory with even fewer potions?</p>
+        <p>True mastery comes from improving your strategy with each playthrough!</p>
+    </div>
+</div>
+{% endblock %}

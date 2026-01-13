@@ -1,0 +1,44 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Game Over - Text Adventure RPG{% endblock %}
+
+{% block content %}
+<div style="text-align: center; padding: 50px 0;">
+    <div style="background: #f8d7da; border: 2px solid #f5c6cb; padding: 40px; border-radius: 15px; margin: 30px 0;">
+        <h2 style="color: #721c24; margin-bottom: 20px;">💀 Game Over 💀</h2>
+        
+        <div style="font-size: 4em; margin: 20px 0;">⚰️</div>
+        
+        <p style="font-size: 1.2em; color: #721c24; margin-bottom: 30px;">
+            Your adventure has come to an end...
+        </p>
+        
+        <div style="background: #fff; padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <h3 style="color: #495057;">📊 Final Stats</h3>
+            <p><strong>Enemies Defeated:</strong> {{ enemies_defeated|default:0 }}/10</p>
+            <p><strong>Cause of Death:</strong> Defeated in combat</p>
+        </div>
+        
+        <div style="background: #fff3cd; padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <h3 style="color: #856404;">💡 Lessons Learned</h3>
+            <p>• Use potions before your health gets too low</p>
+            <p>• Explore different locations to find more items</p>
+            <p>• Sometimes it's better to heal than to attack</p>
+        </div>
+        
+        <div style="margin: 40px 0;">
+            <a href="{% url 'start_game' %}" class="btn btn-success" style="font-size: 18px; padding: 15px 30px; margin: 10px;">
+                🔄 Try Again
+            </a>
+            <a href="{% url 'home' %}" class="btn" style="font-size: 18px; padding: 15px 30px; margin: 10px;">
+                🏠 Main Menu
+            </a>
+        </div>
+    </div>
+    
+    <div style="background: #e2e3e5; padding: 20px; border-radius: 8px; margin-top: 30px;">
+        <p><strong>🎯 Challenge:</strong> Can you defeat all 10 enemies and achieve victory?</p>
+        <p>Every hero falls, but true heroes get back up and try again!</p>
+    </div>
+</div>
+{% endblock %}

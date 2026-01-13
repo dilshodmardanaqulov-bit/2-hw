@@ -1,0 +1,101 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Play Game - Text Adventure RPG{% endblock %}
+
+{% block content %}
+<div class="location">
+    📍 Current Location: {{ location|title }}
+</div>
+
+{% if message %}
+<div class="message">
+    {{ message }}
+</div>
+{% endif %}
+
+<div class="stats">
+    <div class="stat-box">
+        <h3>👤 Player Status</h3>
+        <p><strong>Health:</strong> {{ player_health }}/{{ player_max_health }}</p>
+        <div class="health-bar">
+            <div class="health-fill" style="width: {% widthratio player_health player_max_health 100 %}%"></div>
+        </div>
+        <p><strong>Enemies Defeated:</strong> {{ enemies_defeated }}/10</p>
+    </div>
+    
+    <div class="stat-box">
+        <h3>🎯 Progress</h3>
+        <p><strong>Victory Progress:</strong></p>
+        <div class="health-bar">
+            <div class="health-fill" style="width: {% widthratio enemies_defeated 10 100 %}%"></div>
+        </div>
+        <p style="text-align: center; margin-top: 5px;">{{ enemies_defeated }}/10 Enemies</p>
+    </div>
+</div>
+
+{% if current_enemy %}
+<div class="enemy-info">
+    <h3>⚔️ Enemy Encounter!</h3>
+    <p><strong>{{ current_enemy.name }}</strong></p>
+    <p><em>{{ current_enemy.description }}</em></p>
+    <p><strong>Health:</strong> {{ current_enemy.health }}/{{ current_enemy.max_health }}</p>
+    <div class="health-bar enemy-health">
+        <div class="health-fill" style="width: {% widthratio current_enemy.health current_enemy.max_health 100 %}%"></div>
+    </div>
+    <p><strong>Attack Power:</strong> {{ current_enemy.attack_power }}</p>
+</div>
+{% else %}
+<div style="background: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: center;">
+    <p><strong>🌟 The area is safe for now...</strong></p>
+    <p>Move to explore or wait for enemies to appear!</p>
+</div>
+{% endif %}
+
+<div class="inventory">
+    <h3>🎒 Inventory</h3>
+    {% if inventory %}
+        {% for item in inventory %}
+        <div class="item">
+            <strong>{{ item.name }}</strong> 
+            {% if item.type == 'potion' %}🧪{% elif item.type == 'weapon' %}⚔️{% elif item.type == 'shield' %}🛡️{% elif item.type == 'treasure' %}💎{% endif %}
+            - {{ item.description }}
+            {% if item.effect_value %}(Effect: {{ item.effect_value }}){% endif %}
+        </div>
+        {% endfor %}
+    {% else %}
+        <p><em>Your inventory is empty. Explore to find items!</em></p>
+    {% endif %}
+</div>
+
+<div class="actions">
+    <h3>🎮 Actions</h3>
+    
+    {% if current_enemy %}
+        <a href="{% url 'attack' %}" class="btn btn-danger">
+            ⚔️ Attack Enemy
+        </a>
+    {% endif %}
+    
+    <a href="{% url 'move' %}" class="btn btn-warning">
+        🗺️ Move Location
+    </a>
+    
+    {% if has_potion %}
+        <a href="{% url 'heal' %}" class="btn btn-success">
+            🧪 Use Potion
+        </a>
+    {% else %}
+        <button class="btn" disabled>
+            🧪 No Potions
+        </button>
+    {% endif %}
+</div>
+
+<div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 30px; text-align: center;">
+    <p><strong>💡 Strategy Tips:</strong></p>
+    <p>• Attack enemies to defeat them and gain treasure</p>
+    <p>• Use potions wisely when your health is low</p>
+    <p>• Move between locations to find items</p>
+    <p>• Defeat 10 enemies to achieve victory!</p>
+</div>
+{% endblock %}

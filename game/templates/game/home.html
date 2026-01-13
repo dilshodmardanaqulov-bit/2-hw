@@ -1,0 +1,52 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Home - Text Adventure RPG{% endblock %}
+
+{% block content %}
+<div style="text-align: center; padding: 50px 0;">
+    <h2 style="color: #2c3e50; margin-bottom: 30px;">Welcome to Text Adventure RPG!</h2>
+    
+    <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; margin: 30px 0;">
+        <h3 style="color: #3498db; margin-bottom: 20px;">🎮 How to Play</h3>
+        <div style="text-align: left; max-width: 500px; margin: 0 auto;">
+            <p><strong>🎯 Objective:</strong> Defeat 10 enemies to achieve victory!</p>
+            <p><strong>⚔️ Combat:</strong> Attack enemies to reduce their health</p>
+            <p><strong>🧪 Healing:</strong> Use potions to restore your health</p>
+            <p><strong>🗺️ Exploration:</strong> Move between locations to find items</p>
+            <p><strong>🎒 Inventory:</strong> Collect weapons, potions, and treasure</p>
+        </div>
+    </div>
+    
+    <div style="margin: 40px 0;">
+        <h3 style="color: #27ae60; margin-bottom: 20px;">🏆 Game Features</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 600px; margin: 0 auto;">
+            <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                <h4>👤 Player Stats</h4>
+                <p>Start with 100 HP</p>
+            </div>
+            <div style="background: #fff3e0; padding: 15px; border-radius: 8px;">
+                <h4>👹 Enemy Encounters</h4>
+                <p>Random battles</p>
+            </div>
+            <div style="background: #e3f2fd; padding: 15px; border-radius: 8px;">
+                <h4>🗺️ Multiple Locations</h4>
+                <p>Forest, Cave, Mountain, Village</p>
+            </div>
+            <div style="background: #fce4ec; padding: 15px; border-radius: 8px;">
+                <h4>💎 Item Collection</h4>
+                <p>Weapons, Potions, Treasure</p>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin: 40px 0;">
+        <a href="{% url 'start_game' %}" class="btn btn-success" style="font-size: 20px; padding: 15px 30px;">
+            🚀 Start Adventure
+        </a>
+    </div>
+    
+    <div style="background: #fff3cd; padding: 20px; border-radius: 8px; margin-top: 30px;">
+        <p><strong>💡 Tip:</strong> Save your potions for tough battles and explore different locations to find valuable items!</p>
+    </div>
+</div>
+{% endblock %}
